@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import CatChild from './CatChild';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-
+import data from './data.json'
 function Parent() {
 
     let [totalNumOfTunas, setTotalNumOfTunas] = useState(0);
@@ -12,8 +10,20 @@ function Parent() {
     }
     return(
         <>
+
         <h2 style={{background:"Green" ,color:"white", marginBottom:"10rem" ,marginTop:"2rem" ,textAlign: 'center',border:"20px"}}>Total Num of Likes : {totalNumOfTunas}</h2>
-        <div style={{display:"flex", flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' }}>
+                {data.map(card => {
+                    return (
+                        <CatChild 
+                        name={card.title}
+                        imgPath={card.image_url}
+                        increment={incrementTotalLikes}
+                        
+                        />
+                    )
+                })}
+        {/* <div style={{display:"flex", flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' }}>
           
           <CatChild 
             name="nature1"
@@ -30,7 +40,7 @@ function Parent() {
             name="nature3"
             imgPath="https://wallpapercave.com/wp/u9AVLry.jpg"
             increment={incrementTotalLikes}
-          />
+          /> */}
     
           </div>
         </>
